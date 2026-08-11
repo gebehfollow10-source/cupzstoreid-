@@ -1,0 +1,6 @@
+const openBtn=document.getElementById("openBtn"),content=document.getElementById("content"),loveBtn=document.getElementById("loveBtn"),finalMessage=document.getElementById("finalMessage"),music=document.getElementById("music"),musicBtn=document.getElementById("musicBtn"),hearts=document.getElementById("hearts");
+function makeHeart(n=30){for(let i=0;i<n;i++){let h=document.createElement("span");h.className="heart";h.textContent=["❤","♥","♡"][Math.floor(Math.random()*3)];h.style.left=Math.random()*100+"%";h.style.fontSize=12+Math.random()*24+"px";h.style.animationDuration=4+Math.random()*5+"s";hearts.appendChild(h);setTimeout(()=>h.remove(),10000)}}
+openBtn.onclick=()=>{content.classList.remove("hidden");content.scrollIntoView({behavior:"smooth"});makeHeart(60);music.play().catch(()=>{})};
+loveBtn.onclick=()=>{finalMessage.classList.remove("hidden");makeHeart(100);window.scrollTo({top:document.body.scrollHeight,behavior:"smooth"})};
+musicBtn.onclick=()=>{if(music.paused){music.play();musicBtn.textContent="♫"}else{music.pause();musicBtn.textContent="▶"}};
+setInterval(()=>makeHeart(2),1800);
